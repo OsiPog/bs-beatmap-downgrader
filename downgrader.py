@@ -76,7 +76,7 @@ def main():
     
     parent_folder: str = "/".join(beatmap_folder_path.split("/")[:-1])
     folder_name: str = beatmap_folder_path.split("/")[-1]
-    new_folder: str = parent_folder + "/" + "(downgraded) " + folder_name
+    new_folder: str = parent_folder + "/" + "(DG) " + folder_name
     shutil.copytree(beatmap_folder_path, new_folder, dirs_exist_ok=True)
 
     file_names: list[str] = os.listdir(beatmap_folder_path)
