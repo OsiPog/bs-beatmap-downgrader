@@ -14,6 +14,6 @@ python downgrader.py C:\absolute\path\to\beatmap
 
 
 
-The `auto_downgrade.py` script is supposed make the use easier. Once set up, it will downgrade any new maps that were downloaded to your Beat Saber folder since it last ran and delete the original one.
+The `auto_downgrade.py` script is supposed make the use easier. Once set up, it will downgrade any new maps that were downloaded to your Beat Saber folder since it last ran.
 
 To set it up just run `setup.py` and follow the instructions. If you changed your mind on your inputs just run `setup.py` again.
