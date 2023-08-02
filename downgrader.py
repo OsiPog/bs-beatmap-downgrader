@@ -76,7 +76,8 @@ def main():
     
     parent_folder: str = "/".join(beatmap_folder_path.split("/")[:-1])
     folder_name: str = beatmap_folder_path.split("/")[-1]
-    shutil.copytree(beatmap_folder_path, parent_folder + "/" + folder_name + " (downgraded)", dirs_exist_ok=True)
+    new_folder: str = parent_folder + "/" + "(downgraded) " + folder_name
+    shutil.copytree(beatmap_folder_path, new_folder, dirs_exist_ok=True)
 
     file_names: list[str] = os.listdir(beatmap_folder_path)
 
@@ -84,13 +85,15 @@ def main():
     for file_name in file_names:
         if file_name.split(".")[-1] == "dat":
             downgraded: dict = {}
-            with open(beatmap_folder_path + " (downgraded)" + "/" + file_name, "r") as file:
+            with open(new_folder + "/" + file_name, "r") as file:
                 downgraded = downgrade(json.load(file))
                 if not downgraded: 
-                    print("Couldn't downgrade " + file_name)
-                    continue
+                    print("Couldn't downgrade " + file_name + " (maybe its already on V2?)")
+                    print("Stopping downgrading..")
+                    shutil.rmtree(new_folder)
+                    break
 
-            with open(beatmap_folder_path + " (downgraded)" + "/" + file_name, "w") as file:
+            with open(new_folder + "/" + file_name, "w") as file:
                 json.dump(downgraded, file)
             
             print("Downgraded " + file_name + "!")
