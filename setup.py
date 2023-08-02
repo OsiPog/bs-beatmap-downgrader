@@ -28,7 +28,7 @@ def main():
     # make settings.json
     custom_levels_dir: str = directory + "/Beat Saber_Data/CustomLevels"
     with open("settings.json", "w") as file:
-        json.dump({ "customLevelsDir": custom_levels_dir})
+        json.dump({ "customLevelsDir": custom_levels_dir}, file)
     
     # the maps json that keeps track of already converted maps
     with open(custom_levels_dir + "/" + "maps.json", "w") as file:
