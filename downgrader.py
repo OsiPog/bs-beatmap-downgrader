@@ -10,7 +10,7 @@ def downgrade(beatmap: dict):
         beatmap["_songName"] += " (downgraded)"
         return beatmap
 
-    if not beatmap["version"]: return
+    if not ("version" in beatmap): return
     v2_map: dict = {
         "_version": "2.0.0",
         "_notes": [],
